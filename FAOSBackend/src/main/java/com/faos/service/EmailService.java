@@ -45,4 +45,14 @@ public class EmailService {
         message.setText(text);
         mailSender.send(message);
     }
+    
+    public void sendEmail(String to, String subject, String body) {
+        System.out.println("Preparing to send email...");
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(body);
+        mailSender.send(message);
+        System.out.println("Email sent successfully to " + to);
+    }
 }
