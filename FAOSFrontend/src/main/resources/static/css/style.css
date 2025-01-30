@@ -1,0 +1,662 @@
+/* Global reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #4CAF50, #FF9800);
+    /* Green and orange gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Ensures the body fills the viewport */
+    /* overflow: hidden; Prevents scrolling */
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    /* Adds readability to text */
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.7);
+    /* Dark overlay for contrast */
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    width: 80%;
+    max-width: 900px;
+    /* Increased max-width to accommodate dropdowns */
+    text-align: center;
+    transform: scale(1);
+    animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ffcc00, #f27c1e, #f2c94c, #0073e6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    animation: textAnimation 4s ease-in-out infinite;
+}
+
+@keyframes textAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    line-height: 1.7;
+    background: linear-gradient(45deg, #ff6f61, #ffcc00, #00bcd4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientTextAnimation 5s ease-in-out infinite;
+}
+
+@keyframes gradientTextAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Make navigation a flex container to align items horizontally */
+nav {
+    width: 100%;
+    /* Full width for the navigation */
+}
+
+nav ul {
+    display: flex;
+    /* Use flexbox to align items in a row */
+    justify-content: center;
+    /* Center the navigation items */
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.links li {
+    position: relative;
+    margin: 0 20px;
+    /* Space between each dropdown */
+}
+
+.link-item {
+    text-decoration: none;
+    color: #ffcc00;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 2px solid #ffcc00;
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.link-item:hover {
+    background-color: #ffcc00;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.link-item:active {
+    transform: translateY(2px);
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 10px 0;
+    min-width: 180px;
+    max-height: 230px;
+    overflow-y: scroll;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.dropdown-item {
+    text-decoration: none;
+    color: #ffcc00;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    display: block;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #ffcc00;
+    color: #fff;
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .link-item {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+
+    .dropdown-menu {
+        min-width: 160px;
+    }
+}
+
+/* ==================================================================== */
+/* ============================= ADD CYLINDER ========================= */
+/* ==================================================================== */
+
+/* Form container styles (no changes here) */
+.cylinder-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.form-message {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-message.success {
+  background-color: #27ae60;
+  color: #fff;
+  border: 2px solid #1e8449;
+}
+
+.form-message.error {
+  background-color: #e74c3c;
+  color: #fff;
+  border: 2px solid #c0392b;
+}
+
+
+.back-button-container {
+    position: relative;
+}
+
+/* Back button styles */
+.form-back-btn {
+    position: absolute;
+    top: -30px;
+    /* Adjust as needed */
+    right: 10px;
+    background: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s ease, transform 0.2s ease;
+    z-index: 10;
+    /* Ensure it stays on top */
+}
+
+.form-back-btn:hover {
+    background: #2980b9;
+}
+
+.form-back-btn:active {
+    transform: translateY(1px);
+}
+
+/* Form group and buttons (unchanged) */
+.cylinder-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.cylinder-form label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #ffcc00;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cylinder-form input,
+.cylinder-form select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: #333;
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.cylinder-form input:focus,
+.cylinder-form select:focus {
+    border-color: #f27c1e;
+    box-shadow: 0 0 8px rgba(242, 124, 30, 0.5);
+}
+
+/* Submit and Clear Buttons */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-submit-btn,
+.form-clear-btn {
+    flex: 1;
+    background: #ffcc00;
+    color: #000;
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.form-clear-btn {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.form-submit-btn:hover {
+    background: #f27c1e;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.form-clear-btn:hover {
+    background: #c0392b;
+}
+
+.form-submit-btn:active,
+.form-clear-btn:active {
+    transform: translateY(1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cylinder-form {
+        padding: 20px;
+    }
+
+    .cylinder-form label {
+        font-size: 1rem;
+    }
+
+    .form-submit-btn,
+    .form-clear-btn {
+        font-size: 0.9rem;
+    }
+
+    .form-back-btn {
+        top: -40px;
+        /* Adjust for smaller screens */
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ==================================================================== */
+/* =========================== VIEW CYLINDERS ========================= */
+/* ==================================================================== */
+
+/* Style for the filter container */
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Labels */
+.filter-container label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-right: 5px;
+}
+
+/* Dropdowns (select elements) */
+.filter-container select {
+    padding: 8px 10px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-color: #fff;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.filter-container select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Search box (input element) */
+.filter-container input[type="text"] {
+    padding: 8px 10px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-color: #fff;
+    flex-grow: 1;
+    min-width: 200px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.filter-container input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* General alignment and spacing */
+.filter-container * {
+    box-sizing: border-box;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+
+    .filter-container label {
+        margin-bottom: 5px;
+    }
+
+    .filter-container input[type="text"],
+    .filter-container select {
+        width: 100%;
+    }
+}
+
+
+/* Scrollable Table Container */
+.scrollable {
+  max-height: 300px; /* Adjust height as needed */
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #444;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Container styles */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #000;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+/* Header buttons */
+.header-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Back and Add Cylinder button styles */
+.view-cylinders-back-btn,
+.view-cylinders-add-btn {
+  background: #3498db;
+  color: #fff;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.view-cylinders-back-btn:hover,
+.view-cylinders-add-btn:hover {
+  background: #2980b9;
+}
+
+.view-cylinders-back-btn:active,
+.view-cylinders-add-btn:active {
+  transform: translateY(1px);
+}
+
+/* Table styles */
+.cylinders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #222;
+  color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cylinders-table th,
+.cylinders-table td {
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 1px solid #444;
+}
+
+.cylinders-table th {
+  background: #f27c1e;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.cylinders-table td {
+  color: #ddd;
+}
+
+.cylinders-table tr:hover {
+  background: #333;
+}
+
+/* Table buttons */
+.table-btn {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.view-cylinders-back-btn,
+.view-cylinders-add-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.update-button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.table-btn:active {
+  transform: translateY(1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .view-cylinders-back-btn,
+  .view-cylinders-add-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .cylinders-table th,
+  .cylinders-table td {
+    font-size: 0.9rem;
+  }
+
+  .table-btn {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ==================================================================== */
+/* =========================== ERROR PAGE ========================= */
+/* ==================================================================== */
+
+/* Error Page Container */
+.error-page {
+    text-align: center;
+    margin-top: 20vh;
+}
+
+.error-page h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #e74c3c; /* Bright red for error title */
+}
+
+.error-page p {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.error-container .form-back-btn {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.error-container .form-back-btn:hover {
+    background-color: #444;
+}
+

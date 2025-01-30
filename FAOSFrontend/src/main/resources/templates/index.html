@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Fuel Agency Operations Suite</title>
+
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1>Welcome to the Fuel Agency Operations Suite</h1>
+      <p>Your central hub for managing and optimizing fuel operations efficiently.</p>
+
+      <nav>
+        <ul class="links">
+          <li class="dropdown">
+            <a href="#" class="link-item">Cylinder</a>
+            <ul class="dropdown-menu">
+              <li><a th:href="@{/add-cylinder}" class="dropdown-item">Add Cylinder</a></li>
+              <li><a th:href="@{/view-cylinders}" class="dropdown-item">View Cylinders</a></li>
+              <li><a th:href="@{/refill-cylinder}" class="dropdown-item">Refill Cylinders</a></li>
+              <!-- <li><a href="view-cylinder.html" class="dropdown-item">View Cylinder</a></li>
+              <li><a href="view-cylinder.html" class="dropdown-item">View Cylinder</a></li>
+              <li><a href="view-cylinder.html" class="dropdown-item">View Cylinder</a></li> -->
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="link-item">Customer</a>
+            <ul class="dropdown-menu">
+              <li><a href="add-customer.html" class="dropdown-item">Add Customer</a></li>
+              <li><a href="view-customer.html" class="dropdown-item">View Customer</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="link-item">Supplier</a>
+            <ul class="dropdown-menu">
+              <li><a href="add-supplier.html" class="dropdown-item">Add Supplier</a></li>
+              <li><a href="view-supplier.html" class="dropdown-item">View Supplier</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="link-item">Reports</a>
+            <ul class="dropdown-menu">
+              <li><a href="view-reports.html" class="dropdown-item">View Reports</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

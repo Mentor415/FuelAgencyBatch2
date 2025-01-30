@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error</title>
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="error-container">
+  <!-- Back Button -->
+  <a type="button" class="form-back-btn" href="/" th:href="@{/}">Back to Home</a>
+
+  <!-- Error Message Section -->
+  <div class="error-page">
+    <h1>Error</h1>
+    <p th:text="${errorMessage}">Something went wrong. Please try again later.</p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Refill Cylinder</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Buttons -->
+        <div class="header-buttons">
+            <a type="button" class="view-cylinders-back-btn" th:href="@{/}">Back</a>
+            <a type="button" class="view-cylinders-add-btn" th:href="@{/add-cylinder}">Add Cylinder</a>
+        </div>
+
+        <h1>Refill Cylinder</h1>
+        <p>Below is a list of cylinders which are Empty(Scroll)</p>
+          <!-- Success and Error Messages -->
+          <div id="message" th:if="${successMessage != null}" class="form-message success">
+            <span th:text="${successMessage}"></span>
+        </div>
+        <div id="message" th:if="${errorMessage != null}" class="form-message error">
+            <span th:text="${errorMessage}"></span>
+        </div>
+
+       
+
+        <!-- Cylinders Table -->
+        <div class="table-container scrollable">
+            <div th:if="${#lists.isEmpty(cylinders)}" id="error-message" class="form-message error">
+                <span>No cylinders available. Please add them first!</span>
+            </div>
+            <table th:if="${!#lists.isEmpty(cylinders)}" class="cylinders-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Weight (kg)</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="cylinder-table-body">
+                    <tr th:each="cylinder : ${cylinders}">
+                        <td th:text="${cylinder.id}"></td>
+                        <td th:text="${cylinder.weight}"></td>
+                        <td th:text="${#strings.capitalize(cylinder.type)}"></td>
+                        <td th:text="${#strings.capitalize(cylinder.status)}"></td>
+                        <td th:text="${cylinder.lastRefillDate}"></td>
+                         
+                        <td>
+                            
+                            <button class="update-button" th:attr="onclick='refillCylinder(' + ${cylinder.id} + ')'" >Refill</button>
+
+
+                              
+                            </td>
+                      
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- JavaScript for Filtering and Actions -->
+    <script>
+      function refillCylinder(id) {///refillCylinder/{id}
+    fetch(`/refillCylinder/${id}`, {
+        method: 'PUT'
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Cylinder refilled successfully');
+            window.location.reload(); // Reload the entire page after refill
+        } else {
+            console.error('Error refilling cylinder:', response.statusText);
+        }
+    })
+    .catch(error => console.error('Error refilling cylinder:', error));
+}
+
+
+        
+    </script>
+</body>
+</html>
