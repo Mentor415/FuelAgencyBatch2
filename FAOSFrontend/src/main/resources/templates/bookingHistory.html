@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Booking History</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    h2 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"], button {
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+        width: auto;
+        background-color: #A4B663;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #A4B663;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .no-data {
+        text-align: center;
+        padding: 20px;
+        font-size: 1.2em;
+        color: #555;
+    }
+
+    .back-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #A4B663;
+        color: #000;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-btn:hover {
+        background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+    <h2>Booking History</h2>
+
+    <form action="/booking-history" method="get">
+        <input type="text" name="consumerId" id="searchInput" placeholder="Enter Consumer ID" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div th:if="${error}" class="no-data" th:text="${error}"></div>
+
+    <table th:if="${bookings != null}">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Consumer ID</th>
+                <th>Booking Date</th>
+                <th>Delivery Date</th>
+                <th>Payment Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="booking : ${bookings}">
+                <td th:text="${booking.bookingId}"></td>
+                <td th:text="${booking.consumer.id}"></td>
+                <td th:text="${booking.bookingDate}"></td>
+                <td th:text="${booking.deliveryDate}"></td>
+                <td th:text="${booking.paymentStatus}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div th:if="${bookings == null}" class="no-data">No booking history available.</div>
+
+    <a href="/home" class="back-btn">Back to Home</a>
+</body>
+</html>

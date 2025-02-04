@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/images/cylinder.jpg'); /* Ensure correct path */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            background-color: rgba(77, 77, 77, 0.9); /* Dark background with transparency */
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        h2 {
+            color: #A4B663;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #A4B663;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #8fa856;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Booking Successful!</h2>
+        <p>Your Booking ID is: <span th:text="${bookingId}"></span></p>
+        
+        <a href="/home" class="btn">Go Back to Home Page</a>
+        <a th:href="@{/generate-bill(bookingId=${bookingId})}" class="btn">Generate Bill</a>
+    </div>
+</body>
+</html>

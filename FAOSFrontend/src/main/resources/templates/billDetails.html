@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bill Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/images/cylinder.jpg'); /* Ensure correct image path */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            background-color: rgba(77, 77, 77, 0.9); /* Dark gray with slight transparency */
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .text-center {
+            color: #A4B663;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .bill-info {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #A4B663;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #A4B663;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #8fa856;
+        }
+
+        .error-message {
+            color: #ff4d4d;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center">Bill Details</h2>
+
+        <p class="bill-info">Base Cost: <span class="highlight" th:text="${bill.cost}"></span> ₹</p>
+        <p class="bill-info">Additional Charge: <span class="highlight" th:text="${bill.additionalCharge}"></span> ₹</p>
+        <p class="bill-info">Total Amount: <span class="highlight" th:text="${bill.totalAmount}"></span> ₹</p>
+
+        <div th:if="${error}" class="error-message">
+            <p th:text="${error}"></p>
+        </div>
+
+        <a href="/home" class="btn">Go Back to Home</a>
+    </div>
+
+</body>
+</html>

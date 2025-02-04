@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('images/cylinder.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; 
+        }
+
+        .container {
+            background-color: #4D4D4D;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        .text-center {
+            text-align: center;
+            color: #A4B663;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-check {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .form-check-input {
+            margin-right: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #A4B663;
+            color: #000000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const deliveryDateInput = document.getElementById("deliveryDate");
+            const errorMessage = document.getElementById("error-message");
+            const form = document.querySelector("form");
+    
+            function getMinDeliveryDate() {
+                let minDate = new Date();
+                minDate.setDate(minDate.getDate() + 2);
+                return minDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+            }
+    
+            // Set the minimum selectable date
+            deliveryDateInput.setAttribute("min", getMinDeliveryDate());
+    
+            // Validate delivery date
+            function validateDeliveryDate() {
+                const selectedDate = deliveryDateInput.value;
+                const minDate = getMinDeliveryDate();
+    
+                if (!selectedDate) {
+                    errorMessage.textContent = "Delivery date is required.";
+                    return false;
+                } else if (selectedDate < minDate) {
+                    errorMessage.textContent = "Please select a delivery date at least two days from today.";
+                    return false;
+                }
+    
+                errorMessage.textContent = "";
+                return true;
+            }
+    
+            // Validate on input change
+            deliveryDateInput.addEventListener("change", validateDeliveryDate);
+    
+            // Handle form submission
+            form.addEventListener("submit", function (event) {
+                if (!validateDeliveryDate()) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>    
+    
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Customer Booking</h2>
+	<form action="/book-cylinder" method="post" class="needs-validation" novalidate onsubmit="handleFormSubmit(event)">
+		<div class="form-group">
+		    <label for="consumerId" class="form-label">Consumer ID</label>
+		    <input type="number" id="consumerId" name="consumerId" class="form-control" required>
+		</div>
+		<div th:if="${error}" class="error-message" th:text="${error}"></div>
+
+        <div class="form-group">
+            <label for="deliveryDate" class="form-label">Delivery Date</label>
+            <input type="date" id="deliveryDate" name="deliveryDate" class="form-control" required>
+            <div id="error-message" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Payment Status</label><br>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="cashPayment" name="paymentStatus" value="Cash" checked>
+                <label class="form-check-label" for="cashPayment">Cash</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="card" name="paymentStatus" value="Card">
+                <label class="form-check-label" for="card">Card</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="online" name="paymentStatus" value="Online">
+                <label class="form-check-label" for="online">Online</label>
+            </div>
+        </div>
+        <div class="form-group">
+			<button type="submit" class="btn">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
