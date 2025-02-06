@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deactivate Customer</title>
+    <link rel="stylesheet" href="/CSS/Deactivate_customer.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Deactivate Customer</h1>
+        
+        <!-- Display success or error messages dynamically -->
+        <div id="message" class="show" th:if="${message}">
+			<p th:text="${message}"
+				th:class="${message == 'Customer Deleted Successfully' ? 'success' : 'danger'}">
+			</p>
+		</div>
+        <div id="errorMessage" th:if="${errorMessage}" class="error-message">
+            <p th:text="${errorMessage}"></p>
+        </div>
+
+        <!-- Deactivate Customer Form -->
+        <form id="deactivateForm" action="/deactivate/customer" method="POST">
+            <div class="form-group">
+                <label for="customerId">Customer ID:</label>
+                <input type="text" id="customerId" name="consumerId" required 
+                    placeholder="Enter Customer ID" pattern="\d+" 
+                    title="Please enter a valid numeric ID">
+            </div>
+            <div class="form-group">
+                <label for="deactivationReason">Reason for Deactivation:</label>
+                <textarea id="deactivationReason" name="reasonForDeactivation" required 
+                    placeholder="Enter reason for deactivation"></textarea>
+            </div>
+            <!-- Status field explicitly set to 'false' for deactivation -->
+            <input type="hidden" name="status" value="false">
+            <div class="button-group">
+                <a href="/" class="back-btn">← Back</a>
+                <button type="submit" class="submit-btn">Deactivate</button>
+            </div>
+        </form>
+    </div>
+    
+    <script type="text/javascript">
+        window.onload = function() {
+            var successMessage = document.getElementById("successMessage");
+            var errorMessage = document.getElementById("errorMessage");
+            if (successMessage) {
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                }, 2000);
+            }
+            if (errorMessage) {
+                setTimeout(function() {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+        };
+    </script>
+</body>
+</html>

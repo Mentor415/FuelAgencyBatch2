@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management Hub</title>
+    <link rel="stylesheet" href="/CSS/Menu_page.css">
+    
+</head>
+<body>
+    <div class="main">
+        <h1>Customer Management Hub</h1>
+        
+        <!-- Display success message -->
+        <div class="menu_box">
+            <div class="option_main">
+                <div class="option">
+                    <a href="/register">
+                        <img src="/image/add-user.png" alt="New Customer">
+                        <span>New Customer</span>
+                    </a>
+                </div>
+                <div class="option">
+                    <a href="/customerDetails">
+                        <img src="/image/view.png" alt="View Customer">
+                        <span>View Customer</span>
+                    </a>
+                </div>
+                <div class="option">
+                    <a href="/editRedirect">
+                        <img src="/image/edit.png" alt="Edit Details">
+                        <span>Edit Details</span>
+                    </a>
+                </div>
+                <div class="option">
+                    <a href="/deactivate">
+                        <img src="/image/deactivate.png" alt="Deactivate User">
+                        <span>Deactivate User</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

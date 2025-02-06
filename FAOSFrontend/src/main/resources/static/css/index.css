@@ -1,0 +1,193 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    overflow: auto; /* Make sure content is scrollable if necessary */
+}
+
+select option.placeholder {
+    color: gray; /* Gray out the text */
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 500px; /* Reduced the width of the form */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    color: #000;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 80vh; /* Ensure it takes at least 80% of the viewport height */
+}
+
+/* Form Styling */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Reduced gap between elements */
+}
+
+/* Header */
+.form-header {
+    text-align: center;
+    font-size: 1.6rem; /* Smaller font size */
+    margin-bottom: 20px;
+    color: #ff6f00;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Label Styling */
+label {
+    margin: 8px 0 4px; /* Reduced margin */
+    font-weight: bold;
+    font-size: 14px; /* Smaller font size */
+}
+
+/* Input, Select, and Textarea Styling */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px; /* Reduced padding */
+    margin-bottom: 12px; /* Reduced margin */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px; /* Reduced font size */
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #aaa;
+    font-size: 12px;
+}
+
+.success-message {
+    background-color: #28a745;
+    color: white;
+    padding: 10px; /* Reduced padding */
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative; /* To position the close button */
+    font-size: 14px; /* Smaller font size */
+}
+
+.success-message p {
+    margin: 0;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.close-button:hover {
+    color: #ccc;
+}
+
+
+
+.error {
+    color: red;
+}
+
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* Focus Styling */
+input:focus,
+select:focus,
+textarea:focus {
+    border: 1px solid #ff9d00;
+    outline: none;
+}
+
+/* Button Styling */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px; /* Reduced gap */
+    width: 100%;
+}
+
+.back-button,
+.submit-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 48%; /* Adjusted width for buttons */
+    height: 40px; /* Reduced button height */
+    background-color: #4CAF50;
+    color: white;
+    font-size: 14px; /* Smaller font size */
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.back-button:hover,
+.submit-button:hover {
+    background-color: #388E3C;
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 15px;
+        width: 90%;
+    }
+
+    .form-header {
+        font-size: 1.4rem; /* Smaller header on mobile */
+    }
+
+    input, select, textarea {
+        font-size: 12px; /* Smaller font size on mobile */
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .back-button, .submit-button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Details List</title>
+<link rel="stylesheet" href="/CSS/Customer_Details.css">
+<script src="/JS/Customer_Details.js" defer></script>
+</head>
+<body>
+	<div class="main">
+		<h1 id="head">Customer Details List</h1>
+		<div id="messageContainer" class="message-container"></div>
+		<div class="search-filter-container">
+			<div class="search-box">
+				<input type="text" id="searchInput" placeholder="Enter Consumer ID">
+				<button onclick="searchCustomer()">Search</button>
+			</div>
+			<div class="filter-dropdown">
+				<select id="filterDropdown" onchange="filterCustomers()">
+					<option value="byDefault" disabled selected class="placeholder">Sort
+						By</option>
+					<option value="all">All Customers</option>
+					<option value="active">Activated Customers</option>
+					<option value="deactivated">Deactivated Customers</option>
+				</select>
+			</div>
+			<div id="messageContainer" class="message-container"></div>
+		</div>
+		<div class="tbl">
+			<table>
+				<thead>
+					<tr>
+						<th>Sr No.</th>
+						<th>Consumer ID</th>
+						<th>Customer Name</th>
+						<th>Contact</th>
+						<th>Type</th>
+						<th>Email</th>
+						<th>Address</th>
+						<th>Gender</th>
+						<th>Status</th>
+						<th class="activation-column">Activation Date</th>
+						<th class="deactivation-column">Deactivation Date</th>
+						<th class="deactivation-column">Deactivation Reason</th>
+						<th>Edit</th>
+						<th>Remove</th>
+						<th class="deactivation-column">Activate Customer</th>
+					</tr>
+				</thead>
+				<tbody id="customerTableBody">
+					<tr th:each="customer, stat : ${customers}">
+						<td th:text="${stat.index + 1}"></td>
+						<td th:text="${customer.consumerId}"></td>
+						<td th:text="${customer.name}"></td>
+						<td th:text="${customer.contactNumber}"></td>
+						<td th:text="${customer.connectionType}"></td>
+						<td th:text="${customer.email}"></td>
+						<td th:text="${customer.address}"></td>
+						<td th:text="${customer.gender}"></td>
+						<td th:text="${customer.status}"></td>
+						<td th:text="${customer.registrationDate}" class="activation-column"></td>
+						<td th:text="${customer.deactivationDate}"
+							class="deactivation-column"></td>
+						<td th:text="${customer.reasonForDeactivation}"
+							class="deactivation-column"></td>
+						<td>
+							<button class="edit-button"
+								th:onclick="|window.location.href='/editRedirect?consumerId=${customer.consumerId}'|">Edit</button>
+						</td>
+						<td>
+							<button class="delete-button"
+								th:onclick="|deleteCustomer('${customer.consumerId}')|">Delete</button>
+						</td>
+						<td>
+							<button class="deactivation-column"
+								th:onclick="|activateCustomer('${customer.consumerId}')|">Activate</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="back-btn-container">
+				<a href="/" class="back-btn">← Back</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

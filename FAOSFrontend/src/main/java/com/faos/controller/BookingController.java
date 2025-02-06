@@ -17,7 +17,7 @@ import org.springframework.http.ResponseEntity;
 public class BookingController {
 
     private final RestTemplate restTemplate;
-    private final String backendUrl = "http://localhost:8091/api/bookings";
+    private final String backendUrl = "http://localhost:8080/api/bookings";
 
     public BookingController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+	<link rel="stylesheet" href="/CSS/404.css">
+</head>
+<body>
+    <h1>404</h1>
+    <p class="error-message" th:text="${error}"></p>
+    <p th:text="${message}"></p>
+    <a href="/">Go Back to Home</a>
+</body>
+</html>

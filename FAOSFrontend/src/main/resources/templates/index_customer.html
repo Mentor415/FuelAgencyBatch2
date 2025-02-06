@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Register</title>
+<link rel="stylesheet" href="/CSS/index.css">
+<style>
+body {
+    background-image: url('/image/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 50px auto 50px auto;
+    margin-left: 140px; /* Move form slightly to the left */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+</style>
+
+<script src="/JS/index.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+
+            <h1 class="form-header">Customer Registration</h1>
+
+            <div id="successMessage" th:if="${message}" class="success-message">
+                <p th:text="${message}"></p>
+                <button class="close-button" onclick="closeSuccessMessage()">×</button>
+            </div>
+
+            <form th:action="@{/addCustomer}" method="POST" th:object="${customer}">
+                <!-- Customer Name -->
+                <label for="name">Customer Name<sup style="color: red;"> *</sup></label>
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red; font-size:15px;"></div>
+                <input type="text" id="name" name="name" th:field="*{name}"
+                       placeholder="Enter full name" required>
+                
+                
+                <!-- Contact Number -->
+                <label for="contactNumber">Contact<sup style="color: red;"> *</sup></label>
+                <div th:if="${#fields.hasErrors('contactNumber')}" th:errors="*{contactNumber}" style="color:red; font-size:15px;"></div>
+                <input type="number" id="contactNumber" name="contactNumber"
+                       th:field="*{contactNumber}" placeholder="Enter mobile number" required>
+
+                <!-- Email -->
+                <label for="email">Email<sup style="color: red;"> *</sup></label>
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red; font-size:15px;"></div>
+                <input type="email" id="email" name="email" th:field="*{email}"
+                       placeholder="Enter email address" required>
+
+                <!-- Gender -->
+                <label for="gender">Gender<sup style="color: red;"> *</sup></label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+
+                <!-- Connection Type -->
+                <label for="connectionType">Connection Type<sup style="color: red;"> *</sup></label>
+                <select id="connectionType" name="connectionType" required>
+                    <option value="" disabled selected class="placeholder">Select connection type</option>
+                    <option value="domestic">Domestic</option>
+                    <option value="commercial">Commercial</option>
+                </select>
+
+                <!-- Address -->
+                <label for="address">Address<sup style="color: red;"> *</sup></label>
+				<div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color:red; font-size:15px;"></div>
+                <textarea id="address" name="address" th:field="*{address}"
+                          placeholder="Enter full address" required></textarea>
+                <!-- Buttons -->
+                <div class="button-container">
+                    <a href="/" class="back-button">← Back</a>
+                    <button type="submit" class="submit-button">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

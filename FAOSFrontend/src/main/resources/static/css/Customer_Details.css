@@ -1,0 +1,161 @@
+/* General Styling */
+body {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.message-container {
+    margin: 20px auto;
+    padding: 15px 20px;
+    border: 1px solid transparent;
+    background-color: #ffe6e6; /* Light red background */
+    color: #d9534f; /* Bright red text */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 600px;
+    display: none; /* Hidden by default */
+}
+
+
+
+.main {
+    padding: 20px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+#head {
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* Search and Filter Section */
+.search-filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.search-box {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+/* Adjusted Search Box Styling */
+.search-box input {
+    width: 350px; /* Set a fixed width */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.search-box button {
+    padding: 10px 15px; /* Adjust button padding */
+    background-color: #4682b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.search-box button:hover {
+    background-color: #315b8c;
+}
+
+.filter-dropdown select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Table Styling */
+.tbl {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4682b4;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+td {
+    background-color: #fbfcf8;
+}
+
+td button {
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delete-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}
+
+.edit-button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+}
+
+.edit-button:hover {
+    background-color: #27ae60;
+}
+
+.back-btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-btn {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4682b4;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #315b8c;
+}
