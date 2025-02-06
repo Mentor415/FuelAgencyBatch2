@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.faos.model.Customer;
 
+import jakarta.mail.MessagingException;
+
+import jakarta.mail.MessagingException;
+
 @Service
 public class EmailService {
 
@@ -54,5 +58,13 @@ public class EmailService {
         message.setText(body);
         mailSender.send(message);
         System.out.println("Email sent successfully to " + to);
+    }
+    
+    public void sendEmail(String email, String otp) throws MessagingException {
+    	message= new SimpleMailMessage();
+        message.setTo(email);
+        message.setSubject("Your OTP Verification Code");
+        message.setText("Your OTP is: " + otp + "\n\nPlease use this code to verify your email.");
+        mailSender.send(message);
     }
 }

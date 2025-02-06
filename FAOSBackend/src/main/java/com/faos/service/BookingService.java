@@ -1,13 +1,13 @@
 package com.faos.service;
 
-import com.faos.dto.BookingDTO;
+import com.faos.model.BookingDTO;
 import com.faos.exception.InvalidEntityException;
 import com.faos.model.Bill;
 import com.faos.model.Booking;
-import com.faos.model.Consumer;
+import com.faos.model.Customer;
 import com.faos.model.Cylinder;
 import com.faos.repository.BookingRepository;
-import com.faos.repository.ConsumerRepository;
+import com.faos.repository.CustomerRepository;
 import com.faos.repository.CylinderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,19 +26,19 @@ public class BookingService {
     private CylinderRepository cylinderRepository;
 
     @Autowired
-    private ConsumerRepository consumerRepository;
+    private CustomerRepository consumerRepository;
 
     public BookingService(BookingRepository bookingRepository) {
         this.bookingRepository = bookingRepository;
     }
 
-    public Booking saveBooking(BookingDTO bookingDTO) {
-        Optional<Consumer> opt = consumerRepository.findById(bookingDTO.getConsumerId());
+    public Booking saveBooking(BookingDTO bookingDTO) throws InvalidEntityException {
+        Optional<Customer> opt = consumerRepository.findById(bookingDTO.getConsumerId());
         if (opt.isEmpty()) {
             throw new InvalidEntityException("Consumer not found");
         }
 
-        Consumer consumer = opt.get();
+        Customer consumer = opt.get();
         // Fetch the most recent booking of the consumer
         Optional<Booking> lastBookingOpt = bookingRepository.findTopByConsumerIdOrderByBookingDateDesc(bookingDTO.getConsumerId());
 
@@ -96,19 +96,19 @@ public class BookingService {
         return bookingRepository.findAll();
     }
 
-    public Booking getBookingById(Long id) {
+    public Booking getBookingById(Long id) throws InvalidEntityException {
         return bookingRepository.findById(id)
                 .orElseThrow(() -> new InvalidEntityException("Booking not found for ID: " + id));
     }
 
-    public void deleteBooking(Long id) {
+    public void deleteBooking(Long id) throws InvalidEntityException {
         if (!bookingRepository.existsById(id)) {
             throw new InvalidEntityException("Booking not found for ID: " + id);
         }
         bookingRepository.deleteById(id);
     }
 
-    public List<Booking> getBookingHistoryByConsumerId(Long consumerId) {
+    public List<Booking> getBookingHistoryByConsumerId(Long consumerId) throws InvalidEntityException {
         List<Booking> bookings = bookingRepository.findByConsumerIdOrderByBookingDateDesc(consumerId);
         if (bookings.isEmpty()) {
             throw new InvalidEntityException("No bookings found for Consumer ID: " + consumerId);

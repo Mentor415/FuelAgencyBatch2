@@ -55,8 +55,8 @@ public class Customer {
     private LocalDate deactivationDate;
     private String reasonForDeactivation;
     
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties("ConsumerObject")
+    @OneToMany(mappedBy = "consumer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("consumer")
     private List<Booking> bookings= new ArrayList<>();
     
 }
