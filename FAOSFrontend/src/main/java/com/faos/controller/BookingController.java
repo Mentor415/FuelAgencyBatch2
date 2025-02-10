@@ -24,7 +24,7 @@ public class BookingController {
     }
 
     // Home Page
-    @GetMapping("/home")
+    @GetMapping("/Home")
     public String homePage() {
         return "Home";
     }

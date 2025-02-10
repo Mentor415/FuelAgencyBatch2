@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Booking System</title>
+  <meta charset="UTF-8">
+  <title>Booking System</title>
 
   <style>
     /* Global Styles */
@@ -59,15 +59,15 @@ h1 {
   </style>
 </head>
 <body>
-  <div class="container">
+<div class="container">
 
-    <h1>Welcome to the Customer Booking System</h1>
+  <h1>Welcome to the Customer Booking System</h1>
 
-    <div class="button-container">
-      <a href="/bookings" class="button">Customer Booking</a>
-      <a href="/booking-history" class="button">Booking History</a>
+  <div class="button-container">
+    <a th:href="@{/bookings}" class="button">Customer Booking</a>
+    <a th:href="@{/booking-history}" class="button">Booking History</a>
 
-    </div>
   </div>
+</div>
 </body>
 </html>

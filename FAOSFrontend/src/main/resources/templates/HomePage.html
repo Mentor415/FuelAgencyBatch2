@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuel Agency Home</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(to right, #ff7e5f, #feb47b);
+        margin: 0;
+    }
+    .container {
+        text-align: center;
+    }
+    h1 {
+        color: white;
+        margin-bottom: 30px;
+    }
+    .btn {
+        display: block;
+        width: 250px;
+        padding: 15px;
+        margin: 15px auto;
+        font-size: 18px;
+        color: white;
+        background: #444;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        text-decoration: none;
+    }
+    .btn:hover {
+        transform: scale(1.1);
+        background: #222;
+    }
+  </style>
+
+</head>
+<body>
+<div class="container">
+  <h1>Welcome to Fuel Agency</h1>
+  <!-- <a th:href="@{/bookings}" class="btn">Cylinder Booking</a>-->
+  <a th:href="@{/Menu_page}" class="btn">Customer</a>
+  <a th:href="@{/Home}" class="btn">Cylinder</a>
+</div>
+</body>
+</html>

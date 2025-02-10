@@ -33,6 +33,11 @@ public class CustomerController {
 
 	@GetMapping("/")
 	public String get() {
+		return "HomePage";
+	}
+
+	@GetMapping("/Menu_page")
+	public String gets() {
 		return "Menu_page";
 	}
 
