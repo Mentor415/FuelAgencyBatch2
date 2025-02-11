@@ -21,6 +21,10 @@ public class HomeController {
     public HomeController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
+    @GetMapping("/index")
+    public String homePage() {
+        return "index";
+    }
 
     // Add Cylinder Page
     @GetMapping("/add-cylinder")
@@ -45,7 +49,7 @@ public class HomeController {
                 model.addAttribute("errorMessage", "Error adding cylinder. Please try again.");
             }
         } catch (Exception e) {
-            model.addAttribute("errorMessage", "Error adding cylinder. Please try again.");
+            model.addAttribute("errorMessage","Error adding cylinder Please try again");
         }
     
         // Add necessary attributes for the form
@@ -65,7 +69,7 @@ public class HomeController {
             CylinderDTO[] cylinders = restTemplate.getForObject(apiUrl, CylinderDTO[].class);
             model.addAttribute("cylinders", Arrays.asList(cylinders));  // Add list of cylinders to model
         } catch (Exception e) {
-            model.addAttribute("errorMessage", "Error fetching cylinders. Please try again.");
+            model.addAttribute("errorMessage");
         }
         return "view-cylinders"; // Thymeleaf template name
     }
@@ -79,7 +83,7 @@ public class HomeController {
             CylinderDTO[] cylinders = restTemplate.getForObject(apiUrl, CylinderDTO[].class);
             model.addAttribute("cylinders", Arrays.asList(cylinders));  // Add list of cylinders to model
         } catch (Exception e) {
-            model.addAttribute("errorMessage", "Error fetching cylinders. Please try again.");
+            model.addAttribute("errorMessage");
         }
         return "refill-cylinder"; // Thymeleaf template name
     }
@@ -137,7 +141,7 @@ public class HomeController {
            
             return "add-cylinder"; // Thymeleaf template name
         } catch (Exception e) {
-            model.addAttribute("errorMessage", "Error fetching cylinder details. Please try again.");
+            model.addAttribute("errorMessage");
             return "redirect:/view-cylinders"; // Redirect back to view cylinders on error
         }
     }
