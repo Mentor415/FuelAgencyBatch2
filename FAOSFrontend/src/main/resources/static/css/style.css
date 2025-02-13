@@ -188,6 +188,36 @@ nav ul {
     background-color: #ffcc00;
     color: #fff;
 }
+.back-btn-wrapper {
+    position: absolute;
+    top: 10px;  /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+}
+
+.back-home-btn {
+    text-decoration: none;
+    color: #ffcc00;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 2px solid #ffcc00;
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.back-home-btn:hover {
+    background-color: #ffcc00;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.back-home-btn:active {
+    transform: translateY(2px);
+}
+
 
 /* Ensure responsiveness */
 @media (max-width: 768px) {
@@ -254,7 +284,7 @@ nav ul {
     position: absolute;
     top: -30px;
     /* Adjust as needed */
-    right: 10px;
+    left: 10px;
     background: #3498db;
     color: #fff;
     padding: 10px 15px;

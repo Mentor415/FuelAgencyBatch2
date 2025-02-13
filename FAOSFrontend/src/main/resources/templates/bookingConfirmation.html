@@ -10,7 +10,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url('/images/cylinder.jpg'); /* Ensure correct path */
+            background-image: url('/image/cylinder.jpg'); /* Ensure correct path */
             background-size: cover;
             background-position: center;
         }
@@ -61,7 +61,7 @@
         <h2>Booking Successful!</h2>
         <p>Your Booking ID is: <span th:text="${bookingId}"></span></p>
         
-        <a href="/home" class="btn">Go Back to Home Page</a>
+        <a href="/Home" class="btn">Go Back to Home Page</a>
         <a th:href="@{/generate-bill(bookingId=${bookingId})}" class="btn">Generate Bill</a>
     </div>
 </body>

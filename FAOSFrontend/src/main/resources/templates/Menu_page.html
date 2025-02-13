@@ -102,11 +102,37 @@ h1 {
         padding: 20px;
     }
 }
+.back-button-container {
+    position: absolute;
+    top: 10px;  /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+}
+
+.form-back-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: white; /* white color */
+    color: #6a11cb;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.form-back-btn:hover {
+    background-color: white; /* Darker blue */
+}
 
     </style>
     
 </head>
 <body>
+    <div class="back-button-container">
+        <!-- Back Button -->
+        <a type="button" class="form-back-btn" th:href="@{/}">Back</a> <!-- Changed link to view-cylinders -->
+    </div>
     <div class="main">
         <h1>Customer Management Hub</h1>
         

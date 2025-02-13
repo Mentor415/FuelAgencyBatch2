@@ -6,8 +6,13 @@
 
   <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
-<body>
+<div class="back-btn-wrapper">
+  <a type="button" class="back-home-btn" th:href="@{/}">Back</a> 
+</div>
+
+
   <div class="container">
+    
     <div class="content">
       <h1>Cylinder Management System</h1>
      
@@ -20,13 +25,17 @@
               <li><a th:href="@{/add-cylinder}" class="link-item">Add Cylinder</a></li>
               <li><a th:href="@{/view-cylinders}" class="link-item">View Cylinders</a></li>
               <li><a th:href="@{/refill-cylinder}" class="link-item">Refill Cylinders</a></li>
-              
+             
         
           
          
         </ul>
+        
       </nav>
+
     </div>
+
   </div>
+  
 </body>
 </html>
