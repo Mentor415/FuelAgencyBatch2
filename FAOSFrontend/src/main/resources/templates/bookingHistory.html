@@ -91,7 +91,6 @@
         <thead>
             <tr>
                 <th>Booking ID</th>
-                <th>Consumer ID</th>
                 <th>Booking Date</th>
                 <th>Delivery Date</th>
                 <th>Payment Status</th>
@@ -100,7 +99,6 @@
         <tbody>
             <tr th:each="booking : ${bookings}">
                 <td th:text="${booking.bookingId}"></td>
-                <td th:text="${booking.consumer.id}"></td>
                 <td th:text="${booking.bookingDate}"></td>
                 <td th:text="${booking.deliveryDate}"></td>
                 <td th:text="${booking.paymentStatus}"></td>
